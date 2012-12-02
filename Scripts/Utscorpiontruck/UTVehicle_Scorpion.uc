@@ -1213,26 +1213,26 @@ function bool CriticalChargeAttack(UTBot B)
 
 defaultproperties
 {
-	Health=300
+	Health=1000
 	StolenAnnouncementIndex=5
 
 	COMOffset=(x=-40.0,y=0.0,z=-36.0)
 	UprightLiftStrength=280.0
 	UprightTime=1.25
-	UprightTorqueStrength=500.0
+	UprightTorqueStrength=1000.0
 	bCanFlip=true
 	bSeparateTurretFocus=true
 	bHasHandbrake=true
 	bStickDeflectionThrottle=true
-	GroundSpeed=1900
-	AirSpeed=1100
-	RocketSpeed=5000
+	GroundSpeed=2000
+	AirSpeed=1800
+	RocketSpeed=3000
 	ObjectiveGetOutDist=1500.0
 	MaxDesireability=0.4
 	HeavySuspensionShiftPercent=0.75f;
-	bLookSteerOnNormalControls=true
-	bLookSteerOnSimpleControls=true
-	LookSteerSensitivity=2.2
+	bLookSteerOnNormalControls=false
+	bLookSteerOnSimpleControls=false
+	LookSteerSensitivity=0.0
 	LookSteerDamping=0.07
 	ConsoleSteerScale=1.1
 	DeflectionReverseThresh=-0.3
@@ -1242,41 +1242,40 @@ defaultproperties
 		WheelSuspensionDamping=3.0
 		WheelSuspensionBias=0.1
 		ChassisTorqueScale=0.0
-		MaxBrakeTorque=15.0
+		MaxBrakeTorque=5.0
+		StopThreshold=500
 
-//changed from 5 to 10
-		StopThreshold=100
 
 		MaxSteerAngleCurve=(Points=((InVal=0,OutVal=45),(InVal=800.0,OutVal=18.0),(InVal=1300.0,OutVal=13.0),(InVal=1600.0,OutVal=9.0),(InVal=1900.0,OutVal=1.0)))
-		SteerSpeed=320
-//changed from 120 to 220
+		SteerSpeed=1000
 
-		LSDFactor=0.0
+
+		LSDFactor=2.0
 		TorqueVSpeedCurve=(Points=((InVal=-1200.0,OutVal=0.0),(InVal=-600.0,OutVal=160.0),(InVal=0.0,OutVal=260.0),(InVal=1900.0,OutVal=520.0),(InVal=2100.0,OutVal=20.0),(InVal=2300.0,OutVal=0.0)))
 		EngineRPMCurve=(Points=((InVal=-1000.0,OutVal=5000.0),(InVal=0.0,OutVal=1000.0),(InVal=1098.0,OutVal=7000.0),(InVal=1100.0,OutVal=2000.0),(InVal=1698.0,OutVal=9000.0),(InVal=1700.0,OutVal=3000.0),(InVal=2200.0,OutVal=10000.0)))
 		EngineBrakeFactor=0.025
-		ThrottleSpeed=0.9
+		ThrottleSpeed=0.2
 		WheelInertia=0.2
 		NumWheelsForFullSteering=4
 		SteeringReductionFactor=0.0
-		SteeringReductionMinSpeed=1100.0
-		SteeringReductionSpeed=1400.0
+		SteeringReductionMinSpeed=0.0
+		SteeringReductionSpeed=0.0
 		bAutoHandbrake=true
 		bClampedFrictionModel=true
 		FrontalCollisionGripFactor=0.18
 		ConsoleHardTurnGripFactor=1.0
-		HardTurnMotorTorque=0.5
+		HardTurnMotorTorque=0
 
-		SpeedBasedTurnDamping=5.0
-		AirControlTurnTorque=40.0
+		SpeedBasedTurnDamping=0.
+		AirControlTurnTorque=0
 		InAirUprightMaxTorque=15.0
 		InAirUprightTorqueFactor=-30.0
 
 		// Longitudinal tire model based on 10% slip ratio peak
-		WheelLongExtremumSlip=0.2
-		WheelLongExtremumValue=.6
-		WheelLongAsymptoteSlip=.4
-		WheelLongAsymptoteValue=.5
+		WheelLongExtremumSlip=0.1
+		WheelLongExtremumValue=1.0
+		WheelLongAsymptoteSlip=2.0
+		WheelLongAsymptoteValue=0.6
 
 		// Lateral tire model based on slip angle (radians)
    		WheelLatExtremumSlip=0.35     // 20 degrees
@@ -1290,9 +1289,9 @@ defaultproperties
 	SimObj=SimObject
 	Components.Add(SimObject)
 
-	BoostSteerFactors[0] = 10.0
-	BoostSteerFactors[1] = 4.0
-	BoostSteerFactors[2] = 1.2
+	BoostSteerFactors[0] = 0
+	BoostSteerFactors[1] = 0
+	BoostSteerFactors[2] = 0
 
 	Begin Object Class=UTVehicleScorpionWheel Name=RRWheel
 		BoneName="B_R_Tire"
@@ -1335,9 +1334,9 @@ defaultproperties
 	lockSuspensionTravel=37;
 	lockSuspensionStiffness=62.5;
 
-	BoosterForceMagnitude=450.0
-	MaxBoostDuration=2.0
-	BoostChargeDuration=5.0
+	BoosterForceMagnitude=800.0
+	MaxBoostDuration=3.0
+	BoostChargeDuration=.1
 	BoosterCheckRadius=150.0
 	BoostChargeTime=-10.0
 	BoostPowerSpeed=1800.0
